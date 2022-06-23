@@ -10,4 +10,4 @@ GeneLab Amplicon Processing:
 https://hackmd.io/@rcarion/r1aWS4Wq9
 
 GeneLab Metagenomics Processing:
-https://hackmd.io/X_kMIH8LQ7GC8fjgXqWISA
+https://hackmd.io/@rcarion/rJTULUb9c
