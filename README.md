@@ -6,5 +6,5 @@ https://github.com/AstrobioMike/GL-2022-summer-internship/wiki
 First HackMD Page:
 https://hackmd.io/@rcarion/SkCS__mK9
 
-Amplicon
+Amplicon:
 https://hackmd.io/@rcarion/r1aWS4Wq9
