@@ -114,14 +114,6 @@ else:
 
 ################################################################################
 
-# setting some colors
-tty_colors = {
-    'green' : '\033[0;32m%s\033[0m',
-    'yellow' : '\033[0;33m%s\033[0m',
-    'red' : '\033[0;31m%s\033[0m'
-}
-
-
 ### functions ###
 def check_expected_directories(directory : path) -> FlagEntry :
     """ checks expected directories exist """
@@ -134,6 +126,7 @@ def check_expected_directories(directory : path) -> FlagEntry :
         code = FlagCode.GREEN
         message = "The directory " + str(directory)+ " exists."
     return {"code": code, "message": message}
+
 
 def check_for_file_and_contents(file : path):
     """ used by check_fastq_files and check_final_outputs functions """
@@ -151,9 +144,25 @@ def check_for_file_and_contents(file : path):
     return {"code": code, "message": message} 
 
 
-def check_multiqc_outputs(file : path):
+def check_raw_multiqc_outputs(file : path):
     """ makes sure all samples' read files are in the multiqc outputs """
     zip_file = zipfile.ZipFile(fastqc_dir + str(additional_prefix) + "raw_multiqc_data.zip")
+    df = pd.read_csv(zip_file.open("multiqc_general_stats.txt"), sep = "\t", usecols = ["Sample"])
+    file_prefixes_in_multiqc = df["Sample"].tolist()
+
+    if not file in file_prefixes_in_multiqc:
+        code = FlagCode.HALT
+        message = "The raw multiqc output is missing the expected '" + file + "' entry."
+    else:
+        code = FlagCode.GREEN
+        message = "The raw multiqc output contains the expected '" + file + "' entry."
+
+    return {"code": code, "message": message} 
+
+
+def check_filtered_multiqc_outputs(file : path):   
+# checking filtered
+    zip_file = zipfile.ZipFile(fastqc_dir + str(additional_prefix) + "filtered_multiqc_data.zip")
     df = pd.read_csv(zip_file.open("multiqc_general_stats.txt"), sep = "\t", usecols = ["Sample"])
     file_prefixes_in_multiqc = df["Sample"].tolist()
 
@@ -386,6 +395,8 @@ def check_tar_log_files(samples:path):
                 message = "The '" + str(processing_tar_file) + "' contains the expected '" + str(target_log) + "' log file."
     return {"code": code, "message": message}
 
+################################################
+
 vp = ValidationProtocol()
 
 
@@ -436,30 +447,59 @@ for sample in sample_names:
                         vp.add(check_for_file_and_contents)
 
         with vp.component_start(
-            name="multiqc file",
-            description="make sure multiqc files exist and hold content"
+            name="raw multiqc file check",
+            description="make sure raw multiqc files exist and hold content"
         ):
-            rawR_suffixes = [raw_R1_suffix,raw_R2_suffix]
+            R1_suffix = raw_R1_suffix.split(".")[0]
+            R2_suffix = raw_R2_suffix.split(".")[0]
+            rawR_suffixes = [R1_suffix,R2_suffix]
             if single_ended == False:
                 suffix = raw_suffix.split(".")[0]
                 for R_suffix in rawR_suffixes:
                     with vp.payload(
                         payloads=[
                             {
-                                "file" : raw_reads_dir + sample + R_suffix
+                                "file" : sample + R_suffix
                             }
                         ]
                     ):
-                        vp.add(check_multiqc_outputs)
+                        vp.add(check_raw_multiqc_outputs)
             else:
                 with vp.payload(
                     payloads=[
                         {
-                            "file" : raw_reads_dir + sample + raw_suffix
+                            "file" : sample + raw_suffix
                         }
                     ]
                 ):
-                    vp.add(check_multiqc_outputs)
+                    vp.add(check_raw_multiqc_outputs)
+
+        with vp.component_start(
+            name="raw multiqc file check",
+            description="make sure raw multiqc files exist and hold content"
+        ):        
+            R1_suffix = filtered_R1_suffix.split(".")[0]
+            R2_suffix = filtered_R2_suffix.split(".")[0]
+            filteredR_suffixes = [R1_suffix, R2_suffix]
+            if single_ended == False:
+                for filtered_R_suffix in filteredR_suffixes:
+                        with vp.payload(
+                            payloads=[
+                            {
+                                "file" : sample + filtered_R_suffix
+                            }
+                        ]
+                    ):
+                            vp.add(check_filtered_multiqc_outputs)
+            else:
+                with vp.payload(
+                    payloads=[
+                        {
+                            "file" : sample + filtered_R_suffix
+                        }
+                    ]
+                ):
+                    vp.add(check_filtered_multiqc_outputs)
 
     failed_assemblies_list = []
     if os.path.exists(assemblies_dir + additional_prefix + "Failed-assemblies.tsv"):
