@@ -11,7 +11,7 @@
 [Test Dataset Metagenomics Processing Code](https://hackmd.io/xRYblztARdyBqLCYuEZn7A)
 
 # Code Use Instructions
-###### To test the above codes (metagenomics_user_input_validation.py, amplicon_user_input_validation.py):
+To test the above codes (metagenomics_user_input_validation.py, amplicon_user_input_validation.py):
 
 ## Installation:
 - Install dp_tools and set up the conda environment [as explained by Mike Lee](https://github.com/AstrobioMike/GL-2022-summer-internship/wiki/Working-towards-Jonathan's-validation-structure))
@@ -32,25 +32,25 @@ cd GL-amplicon-output-for-validation-testing/
 
 ## Metagenomics Code 
 After running the code, the user will be asked to input data.
-1. **GLDS ID** <br /> e.g. 'GLDS-276'
+1. **GLDS ID** <br /> ###### e.g. 'GLDS-276'
 2. **Path to the sample names file**
-e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
+<br /> ###### e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
 3. **Expected additional filename prefix that was added to the files that describe multiple samples (default: \"\")** Press 'return' key if none
 4. **Specify whether the test data is single-ended**
-e.g. 'y' for 'yes'
+<br /> ######  e.g. 'y' for 'yes'
      'n' for 'no'
 
 ## Amplicon Code 
 After running the code, the user will be asked to input data.
 1. **GLDS ID**
-e.g. 'GLDS-276'
+<br /> ###### e.g. 'GLDS-276'
 2. **Path to the sample names file**
-e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
+<br /> ###### e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
 3. **Output file prefix if there is one** Press 'return' key if none
 4. **Specify whether primers trimmed prior to GeneLab processing** 
-e.g. 'y' for 'yes'
+<br /> ###### e.g. 'y' for 'yes'
      'n' for 'no'
 5. **Specify whether the test data is single-ended**
-e.g. 'y' for 'yes'
+<br /> ###### e.g. 'y' for 'yes'
      'n' for 'no'
 
