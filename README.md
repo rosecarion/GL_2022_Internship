@@ -1,7 +1,7 @@
-# GL_2022_Internship
+# GL 2022 Internship
 [Mike Lee's GeneLab 2022 Summer Internship Wiki](https://github.com/AstrobioMike/GL-2022-summer-internship/wiki)
 
-# HackMD_Pages
+# HackMD Pages
 [First HackMD Page](https://hackmd.io/@rcarion/SkCS__mK9)
 
 [GeneLab Amplicon Processing](https://hackmd.io/@rcarion/r1aWS4Wq9)
