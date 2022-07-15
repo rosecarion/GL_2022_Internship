@@ -14,7 +14,13 @@
 To test the above codes (metagenomics_user_input_validation.py, amplicon_user_input_validation.py):
 
 ## Installation:
-- Install dp_tools and set up the conda environment [as explained by Mike Lee](https://github.com/AstrobioMike/GL-2022-summer-internship/wiki/Working-towards-Jonathan's-validation-structure))
+- Install [conda](https://astrobiomike.github.io/unix/conda-intro#getting-and-installing-conda)
+- Install dp_tools [as explained by Mike Lee](https://github.com/AstrobioMike/GL-2022-summer-internship/wiki/Working-towards-Jonathan's-validation-structure))
+```
+curl -L -o dp_tools-condaEnv.yaml https://raw.githubusercontent.com/J-81/dp_tools/main/condaEnv.yaml
+conda env create -f dp_tools-condaEnv.yaml
+conda activate dp_tools
+```
 
 - Download, unpack, and move metagenomics test data to an output directory with:
 ```
@@ -43,7 +49,7 @@ After running the code, the user will be asked to input data.
 ## Amplicon Code 
 After running the code, the user will be asked to input data.
 1. **GLDS ID**
-<br /> ###### e.g. 'GLDS-276'
+<br />  e.g. 'GLDS-276'
 2. **Path to the sample names file**
 <br />  e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
 3. **Output file prefix if there is one** <br /> Press 'return' key if none
