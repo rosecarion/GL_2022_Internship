@@ -35,7 +35,7 @@ After running the code, the user will be asked to input data.
 1. **GLDS ID** <br />  e.g. 'GLDS-276'
 2. **Path to the sample names file**
 <br />  e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
-3. **Expected additional filename prefix that was added to the files that describe multiple samples (default: \"\")** Press 'return' key if none
+3. **Expected additional filename prefix that was added to the files that describe multiple samples (default: "\")** Press 'return' key if none
 4. **Specify whether the test data is single-ended**
 <br />   e.g. 'y' for 'yes'
      'n' for 'no'
