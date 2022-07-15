@@ -37,22 +37,27 @@ tar -xzvf GL-amplicon-output-for-validation-testing.tar.gz
 cd GL-amplicon-output-for-validation-testing/
 ```
 
+
 ## Metagenomics Code 
 After running the code, the user will be asked to input data.
 1. **GLDS ID** <br />  e.g. 'GLDS-276'
 2. **Path to the sample names file**
-<br />  e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
+<br />  e.g. '/Users/rosecarion/Desktop/GL-metagenomics-output-for-validation-testing/unique-sample-IDs.txt'
 3. **Expected additional filename prefix that was added to the files that describe multiple samples (default is a back slash)** <br />Press 'return' key if none
 4. **Specify whether the test data is single-ended**
 <br />   e.g. 'y' for 'yes'
      'n' for 'no'
+*Information regarding the downloaded test data:<br />
+GLDS ID is 'TEST'<br />
+there is no expected additional filename prefix<br />
+not single-ended*
 
 ## Amplicon Code 
 After running the code, the user will be asked to input data.
 1. **GLDS ID**
 <br />  e.g. 'GLDS-276'
 2. **Path to the sample names file**
-<br />  e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
+<br />  e.g. '/Users/rosecarion/Desktop/Amplicon_validation/GL-amplicon-output-for-validation-testing/unique-sample-IDs.txt'
 3. **Output file prefix if there is one** <br /> Press 'return' key if none
 4. **Specify whether primers trimmed prior to GeneLab processing** 
 <br />  e.g. 'y' for 'yes'
