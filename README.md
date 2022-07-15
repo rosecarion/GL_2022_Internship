@@ -46,11 +46,9 @@ After running the code, the user will be asked to input data.
 3. **Expected additional filename prefix that was added to the files that describe multiple samples (default is a back slash)** <br />Press 'return' key if none
 4. **Specify whether the test data is single-ended**
 <br />   e.g. 'y' for 'yes'
-     <br />'n' for 'no'
-<br />*Information regarding the downloaded test data:<br />
-GLDS ID is 'TEST'<br />
-there is no expected additional filename prefix<br />
-not single-ended*
+     <br />'n' for 'no'<br />
+<br />*Information regarding the downloaded test data:
+GLDS ID is 'TEST', there is no expected additional filename prefix, not single-ended*
 
 ## Amplicon Code 
 After running the code, the user will be asked to input data.
@@ -64,9 +62,5 @@ After running the code, the user will be asked to input data.
      <br />'n' for 'no'
 5. **Specify whether the test data is single-ended**
 <br /> e.g. 'y' for 'yes'
-     <br />'n' for 'no'
-<br />*Information regarding the downloaded test data:<br />
-GLDS ID is 'TEST'<br />
-there is no output file prefix<br />
-primers are not trimmed <br />
-not single-ended*
+     <br />'n' for 'no'<br />
+<br />*Information regarding the downloaded test data: GLDS ID is 'TEST', there is no output file prefix, primers are not trimmed, not single-ended*
