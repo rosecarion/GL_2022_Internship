@@ -32,7 +32,7 @@ cd GL-amplicon-output-for-validation-testing/
 
 ## Metagenomics Code 
 After running the code, the user will be asked to input data.
-1. **GLDS ID** __ e.g. 'GLDS-276'
+1. **GLDS ID**__ e.g. 'GLDS-276'
 2. **Path to the sample names file**
 e.g. '/Users/rosecarion/Desktop/unique-sample-IDs.txt'
 3. **Expected additional filename prefix that was added to the files that describe multiple samples (default: \"\")** Press 'return' key if none
