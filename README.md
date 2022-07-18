@@ -64,3 +64,6 @@ After running the code, the user will be asked to input data.
 <br /> e.g. 'y' for 'yes'
      <br />'n' for 'no'<br />
 <br />*Information regarding the downloaded test data: GLDS ID is 'TEST', there is no output file prefix, primers are not trimmed, not single-ended*
+# Code with external functions 
+ex_function_metagenomics_validation.py and ex_function_amplicon_validation.py call overlapping functions from overlapping_functions_amplicon_metagenomics_validation.py <br />
+The ex_function codes can be used as explained above
