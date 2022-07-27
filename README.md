@@ -10,6 +10,8 @@
 
 [Test Dataset Metagenomics Processing Code](https://hackmd.io/xRYblztARdyBqLCYuEZn7A)
 
+[Annotation of Mike Lee's Metagenomics Processing Code](https://hackmd.io/@rcarion/r1PVHhhq5)
+
 # Code Use Instructions
 To test the above codes (metagenomics_user_input_validation.py, amplicon_user_input_validation.py):
 
