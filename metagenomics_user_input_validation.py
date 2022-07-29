@@ -258,9 +258,12 @@ def check_assembly_based_genes_file(sample : path, file: path, failed_assemblies
         else: 
             code = FlagCode.GREEN
             message = "The expected file '" + str(file) + "' exists and holds content."
-    else:
+    elif not os.path.exists(file) and sample in failed_assemblies_list:
+        code = FlagCode.YELLOW
+        message = "The expected '" + str(file) + "' does not exist and the sample, " + str(sample) + "' is in the failed assemblies list."
+    elif not os.path.exists(file) and sample not in failed_assemblies_list:
         code = FlagCode.HALT
-        message = "The expected file '" + str(file) + "' is not in the failed assemblies list."
+        message = "The expected '" + str(file) + "' does not exist and the sample, " + str(sample) + "' is not in the failed assemblies list."
     return {"code": code, "message": message}
 
 
@@ -454,7 +457,6 @@ for sample in sample_names:
             R2_suffix = raw_R2_suffix.split(".")[0]
             rawR_suffixes = [R1_suffix,R2_suffix]
             if single_ended == False:
-                suffix = raw_suffix.split(".")[0]
                 for R_suffix in rawR_suffixes:
                     with vp.payload(
                         payloads=[
@@ -465,18 +467,19 @@ for sample in sample_names:
                     ):
                         vp.add(check_raw_multiqc_outputs)
             else:
+                suffix = raw_suffix.split(".")[0]
                 with vp.payload(
                     payloads=[
                         {
-                            "file" : sample + raw_suffix
+                            "file" : sample + suffix
                         }
                     ]
                 ):
                     vp.add(check_raw_multiqc_outputs)
 
         with vp.component_start(
-            name="raw multiqc file check",
-            description="make sure raw multiqc files exist and hold content"
+            name="filtered multiqc file check",
+            description="make sure filtered multiqc files exist and hold content"
         ):        
             R1_suffix = filtered_R1_suffix.split(".")[0]
             R2_suffix = filtered_R2_suffix.split(".")[0]
@@ -492,10 +495,11 @@ for sample in sample_names:
                     ):
                             vp.add(check_filtered_multiqc_outputs)
             else:
+                suffix = filtered_suffix.split(".")[0]
                 with vp.payload(
                     payloads=[
                         {
-                            "file" : sample + filtered_R_suffix
+                            "file" : sample + suffix
                         }
                     ]
                 ):
