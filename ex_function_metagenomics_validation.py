@@ -251,10 +251,14 @@ def check_assembly_based_genes_file(sample : path, file: path, failed_assemblies
         else: 
             code = FlagCode.GREEN
             message = "The expected file '" + str(file) + "' exists and holds content."
-    else:
+    elif not os.path.exists(file) and sample in failed_assemblies_list:
+        code = FlagCode.YELLOW
+        message = "The expected '" + str(file) + "' does not exist and the sample, " + str(sample) + "' is in the failed assemblies list."
+    elif not os.path.exists(file) and sample not in failed_assemblies_list:
         code = FlagCode.HALT
-        message = "The expected file '" + str(file) + "' is not in the failed assemblies list."
+        message = "The expected '" + str(file) + "' does not exist and the sample, " + str(sample) + "' is not in the failed assemblies list."
     return {"code": code, "message": message}
+  
 
 
 def check_assembly_summary(assembly_summary_path:path):
